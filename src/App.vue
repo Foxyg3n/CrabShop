@@ -1,10 +1,26 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  
+  <router-view :servers="servers" />
 </template>
+
+<script>
+export default {
+  name: 'App',
+  data() {
+    return {
+      servers: [],
+      pokemon: {}
+    }
+  },
+  async created() {
+    this.servers = [
+      { name: 'BlackMC', img: 'server1.jpeg', ip: 'blackmc.com.pl', port: '25565' },
+      { name: 'Server 2', img: 'server2.jpeg', ip: '', port: '' },
+      { name: 'Server 3', img: 'server3.jpeg', ip: '', port: '' }
+    ]
+  }
+}
+</script>
 
 <style lang="scss">
 #app {

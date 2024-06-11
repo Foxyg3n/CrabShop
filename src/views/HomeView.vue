@@ -1,18 +1,26 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="servers">
+    <Server v-for="server in servers" :key="server.id" :server="server" />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import Server from '@/components/Server.vue'
 
 export default {
+  props: {
+    servers: Array
+  },
   name: 'HomeView',
   components: {
-    HelloWorld
+    Server
   }
 }
 </script>
+
+<style scoped lang="scss">
+.servers {
+  display: flex;
+  justify-content: center;
+}
+</style>
