@@ -49,11 +49,19 @@ export default {
                     },
                     {
                         uuid: "13a42b28-02b1-3129-9c1e-4453c0be131e",
-                        playerName: "Foxyg3n"
+                        playerName: "F0xyg3n"
                     },
                     {
                         uuid: "13a42b28-02b1-3129-9c1e-4453c0be131e",
                         playerName: "AtroxZen"
+                    },
+                    {
+                        uuid: "13a42b28-02b1-3129-9c1e-4453c0be131e",
+                        playerName: "Kocur"
+                    },
+                    {
+                        uuid: "13a42b28-02b1-3129-9c1e-4453c0be131e",
+                        playerName: "F0xyg3n"
                     }
                 ]
             },
@@ -105,7 +113,7 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 :root {
-    --primary: #DBE7D6;
+    --primary: #fff;
     --background: #272932;
     --accent: #272932;
     --text: #2c3e50;

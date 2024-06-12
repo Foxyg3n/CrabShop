@@ -53,7 +53,7 @@ aside {
     position: sticky;
     display: flex;
     justify-content: center;
-    width: 350px;
+    width: 450px;
     flex: 1 0 0;
     height: fit-content;
 }

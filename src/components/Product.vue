@@ -3,9 +3,7 @@
         <img src="https://i1.kwejk.pl/k/obrazki/2019/10/KSwRO9gOTJJLim0i.jpg" alt="product image" />
         <h2>{{ offer.name }}</h2>
         <p>{{ offer.price }}</p>
-        <div class="details">
-            Cenka
-        </div>
+        <button>Details</button>
     </div>
 </template>
 
@@ -20,7 +18,6 @@ export default {
 
 <style scoped lang="scss">
 .product {
-    position: relative;
     width: 360px;
     display: flex;
     flex-direction: column;
@@ -46,22 +43,15 @@ export default {
         margin-top: 0;
     }
 
-    .details {
-        position: absolute;
-        bottom: 0;
-        z-index: -1;
-        width: calc(100% - 20px);
-        background: #f0f0f0;
-        border-radius: 0 0 5px 5px;
-        transform: translateY(0);
-        transition: transform 300ms;
+    button {
+        font: inherit;
         background: var(--background);
-        color: white;
-        padding: 10px 0;
-    }
-
-    &:hover .details {
-        transform: translateY(100%);
+        color: var(--primary);
+        border: none;
+        padding: 5px 15px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        cursor: pointer;
     }
 }
 </style>
