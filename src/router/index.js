@@ -1,6 +1,6 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import ServerView from "../views/ServerView.vue";
-import AboutView from "../views/AboutView.vue";
+import AboutView from "../views/TermsView.vue";
 import OfferView from "../views/OfferView.vue";
 
 const routes = [
