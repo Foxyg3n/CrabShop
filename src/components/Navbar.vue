@@ -3,8 +3,7 @@
         <img src="@/assets/logo.png" alt="logo" class="logo" />
         <div class="nav-links">
             <router-link to="/" class="nav-link">Servers</router-link>
-            <router-link to="/about" class="nav-link">About</router-link>
-            <router-link to="/contact" class="nav-link">Contact</router-link>
+            <router-link to="/tos" class="nav-link">Terms of service</router-link>
         </div>
     </div>
 </template>
@@ -31,7 +30,7 @@ export default {
     .nav-links {
         display: flex;
         column-gap: 15px;
-        margin-right: 10px;
+        margin-right: 20px;
 
         .nav-link {
             text-decoration: none;
@@ -54,7 +53,8 @@ export default {
             transition: opacity 300ms, transform 300ms;
         }
 
-        .nav-link:hover::after, .nav-link:focus::after {
+        .nav-link:hover::after,
+        .nav-link:focus::after {
             opacity: 1;
             transform: translate3d(0, 0.2em, 0);
         }

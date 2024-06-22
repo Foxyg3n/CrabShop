@@ -41,10 +41,12 @@ main {
     display: flex;
     flex-direction: column;
     flex: 4 0 0;
+    flex-wrap: wrap;
 
     .offers {
         display: flex;
         justify-content: center;
+        flex-wrap: wrap;
     }
 }
 
@@ -56,5 +58,21 @@ aside {
     width: 450px;
     flex: 1 0 0;
     height: fit-content;
+}
+
+@media only screen and (max-width: 992px) {
+    aside {
+        top: 10px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    aside {
+        width: 100%;
+
+        .sidebar {
+            width: 100%;
+        }
+    }
 }
 </style>

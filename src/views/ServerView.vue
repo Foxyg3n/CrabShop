@@ -25,5 +25,8 @@ export default {
 .servers {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 30px;
 }
 </style>

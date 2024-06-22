@@ -1,6 +1,6 @@
 <template>
     <div class="product">
-        <img src="https://i1.kwejk.pl/k/obrazki/2019/10/KSwRO9gOTJJLim0i.jpg" alt="product image" />
+        <img :src="assets(offer.img)" alt="product image" />
         <h2>{{ offer.name }}</h2>
         <p>{{ offer.price }}</p>
         <button>Details</button>
@@ -13,12 +13,17 @@ export default {
     props: {
         offer: Object,
     },
+    methods: {
+        assets(image) {
+            return require("../assets/" + image + "");
+        },
+    },
 };
 </script>
 
 <style scoped lang="scss">
 .product {
-    width: 360px;
+    width: 320px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -52,6 +57,10 @@ export default {
         border-radius: 5px;
         margin-bottom: 10px;
         cursor: pointer;
+    }
+
+    button:hover {
+        background: #86878b;
     }
 }
 </style>

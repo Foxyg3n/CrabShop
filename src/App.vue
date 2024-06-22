@@ -19,7 +19,6 @@ export default {
     data() {
         return {
             servers: [],
-            pokemon: {},
         };
     },
     async created() {
@@ -34,13 +33,28 @@ export default {
                     {
                         name: "Starter Pack",
                         price: "$9.99",
-                        img: "starter-pack.jpeg",
+                        img: "rangavip.png",
                     },
                     {
-                        name: "VIP Package",
-                        price: "$19.99",
-                        img: "vip-package.jpeg",
+                        name: "Starter Pack",
+                        price: "$9.99",
+                        img: "rangasvip.png",
                     },
+                    {
+                        name: "Starter Pack",
+                        price: "$9.99",
+                        img: "rangaevip.png",
+                    },
+                    {
+                        name: "Starter Pack",
+                        price: "$9.99",
+                        img: "rangauvip.png",
+                    },
+                    {
+                        name: "Starter Pack",
+                        price: "$9.99",
+                        img: "ranganvip.png",
+                    }
                 ],
                 players: [
                     {
@@ -112,6 +126,10 @@ export default {
 <style lang="scss">
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
+* {
+    box-sizing: border-box;
+}
+
 :root {
     --primary: #fff;
     --background: #272932;
@@ -123,6 +141,29 @@ body {
     margin: 0;
     padding: 0;
     background: #f5f5f5;
+}
+
+main {
+    border-radius: 10px;
+    background-color: #f5f5f5;
+    padding: 20px 50px;
+    height: 100%;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+    font-family: inherit;
+    font-feature-settings: inherit;
+    font-variation-settings: inherit;
+    font-size: 100%;
+    font-weight: inherit;
+    line-height: inherit;
+    color: inherit;
+    margin: 0;
+    padding: 0;
 }
 
 a {
@@ -142,9 +183,45 @@ a {
 }
 
 .content {
+    background-image: url('assets/background.jpg');
+    background-size: cover;
+    background-position: center;
     display: flex;
     justify-content: space-around;
-    padding: 40px;
     flex: 1 0 0;
+    padding: 40px;
+    column-gap: 10vh;
+}
+
+@media only screen and (max-width: 1200px) {
+    .content {
+        column-gap: 5vh;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .content {
+        column-gap: 2vh;
+        padding: 15px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .content {
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+    }
+
+    main {
+        padding: 0;
+        margin: 20px 0;
+    }
+
+    aside {
+        width: 100% !important;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
 }
 </style>

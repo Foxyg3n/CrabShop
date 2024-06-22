@@ -1,6 +1,6 @@
 <template>
     <router-link :class="animate" :to="'offers/' + server.name" class="server">
-        <div :style="{ backgroundImage: imgCssPath(server.img) }" class="image"></div>
+        <div :style="{ backgroundImage: assetsUrl(server.img) }" class="image"></div>
         <h2>{{ server.name }}</h2>
         <p>Version: {{ server.version }}</p>
         <div class="server-info">
@@ -30,7 +30,7 @@ export default {
         };
     },
     methods: {
-        imgCssPath(image) {
+        assetsUrl(image) {
             return "url(" + require("@/assets/" + image + "") + ")";
         },
     },
@@ -53,6 +53,8 @@ export default {
     border-radius: 5px;
     text-align: center;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    background: #f5f5f5;
+    overflow: hidden;
 
     h2 {
         font-size: 28px;
@@ -60,7 +62,7 @@ export default {
         margin-top: 10px;
     }
 
-    & > p {
+    &>p {
         margin-top: 0;
     }
 
@@ -92,6 +94,12 @@ export default {
     100% {
         transform: translateX(0%);
         opacity: 1;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .server {
+        width: 300px;
     }
 }
 </style>

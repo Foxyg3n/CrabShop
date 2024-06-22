@@ -1,6 +1,6 @@
 <template>
     <footer>
-        <p>Copyright &copy; {{ currentYear }}</p>
+        <p>Copyright &copy; {{ currentYear }} - CRAB SHOP</p>
     </footer>
 </template>
 
@@ -18,5 +18,7 @@ export default {
 <style scoped lang="scss">
 footer {
     flex-shrink: 0;
+    background: var(--background);
+    color: #f5f5f5;
 }
-</style>
+</style> 

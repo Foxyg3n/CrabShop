@@ -10,12 +10,12 @@
         <div class="payments-container">
             <h2 v-if="server.players.length">Last payments</h2>
             <h2 v-else>No payments yet</h2>
-            <div class="player" v-for="player in server.players.slice(0,5)">
+            <div class="player" v-for="player in server.players.slice(0, 5)">
                 <img :src="`https://mc-heads.net/avatar/` + player.playerName" alt="{{ player.playerName }}">
                 <h3>
                     {{ player.playerName }}
                 </h3>
-                <div class="product"> 
+                <div class="product">
                     VIP - 30 days
                 </div>
             </div>
@@ -49,19 +49,19 @@ export default {
     background-color: var(--background);
     color: var(--primary);
     min-height: 40vh;
-    width: 100%;
+    width: 400px;
     align-items: center;
     display: flex;
     flex-direction: column;
 
-    h2 {
-        padding: 20px;
-    }
-
-    img {
+    .logo {
         width: 128px;
         height: 128px;
         margin-left: 10px;
+    }
+
+    h2 {
+        padding: 20px;
     }
 
     p {
@@ -74,6 +74,8 @@ export default {
         align-items: center;
         justify-content: center;
         min-height: 30vh;
+        width: 100%;
+        padding: 0 20px;
     }
 
     .server-stats-container {
@@ -97,22 +99,32 @@ export default {
         display: flex;
         justify-content: start;
         align-items: center;
-        margin-left: 20px;
-        margin-right: 20px;
         margin-bottom: 15px;
-        width: 400px;
-        padding: 5px 5px 5px 5px;
-        
-        h3 {
-            font-size: 16px;
-            margin-left: 15px;
-            min-width: 200px;
-            text-align: left;
-        }
+        width: 100%;
+        padding: 10px 10px;
+
         img {
+            flex: 0;
             width: 64px;
             height: 64px;
         }
+
+        h3 {
+            flex: 1;
+            font-size: 16px;
+            text-align: left;
+            margin-left: 10px;
+        }
+
+        .product {
+            flex: 1;
+            text-align: right
+        }
+    }
+}
+@media only screen and (max-width: 992px) {
+    .sidebar {
+        width: 300px;
     }
 }
 </style>
