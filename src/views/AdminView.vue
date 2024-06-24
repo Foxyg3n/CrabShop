@@ -8,9 +8,9 @@
             <h1>Admin Login</h1>
             <form @submit="login">
                 <label for="username">Username</label>
-                <input type="text" placeholder="Jacek" />
+                <input v-model="username" type="text" placeholder="Jacek" />
                 <label for="password">Password</label>
-                <input type="password" placeholder="Placek" />
+                <input v-model="password" type="password" placeholder="Placek" />
                 <div class="checkbox">
                     <label for="logged">Stay logged in</label>
                     <input type="checkbox" name="logged" value="logged" />
@@ -27,17 +27,35 @@ export default {
     data() {
         return {
             loggedIn: false,
+            username: "",
+            password: "",
         };
     },
     methods: {
         login(e) {
             e.preventDefault();
-            this.loggedIn = true;
+            fetch("backend/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    username: this.username,
+                    password: this.password,
+                }),
+            }).then((response) => {
+                if (response.ok) {
+                    this.$emit("login");
+                    this.$router.push("/");
+                }
+            }).catch((error) => {
+                console.error(error);
+            });
         },
         logout() {
             this.loggedIn = false;
-        },
-    },
+        }
+    }
 }
 </script>
 
@@ -64,7 +82,8 @@ export default {
             column-gap: 5px;
         }
 
-        input[type="text"], input[type="password"] {
+        input[type="text"],
+        input[type="password"] {
             width: 100%;
             padding: 5px;
             margin: 5px 0;

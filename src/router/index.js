@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router";
 import ServerView from "../views/ServerView.vue";
-import AboutView from "../views/AboutView.vue";
 import OfferView from "../views/OfferView.vue";
 import AdminView from "../views/AdminView.vue";
 import TermView from "../views/TermsView.vue";
+import SetupView from "../views/SetupView.vue";
 
 const routes = [
   {
@@ -25,6 +25,11 @@ const routes = [
     path: "/admin",
     name: "admin",
     component: AdminView,
+  },
+  {
+    path: "/setup",
+    name: "setup",
+    component: SetupView,
   }
 ];
 

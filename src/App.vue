@@ -1,7 +1,7 @@
 <template>
-    <Navbar />
+    <Navbar @logout="logout" :loggedIn="loggedIn" />
     <div class="content">
-        <RouterView :servers="servers" />
+        <RouterView @login="login" :servers="servers" :setup="setup" :loggedIn="loggedIn" />
     </div>
     <Footer />
 </template>
@@ -19,7 +19,29 @@ export default {
     data() {
         return {
             servers: [],
+            setup: false,
+            loggedIn: false,
         };
+    },
+    methods: {
+        login() {
+            this.loggedIn = true;
+        },
+        logout() {
+            this.loggedIn = false;
+        }
+    },
+    async mounted() {
+        const checkSetupRes = await fetch("backend/checksetup", { method: "POST" });
+        const checkSetupData = await checkSetupRes.json();
+        this.setup = checkSetupData.setup;
+        if (!this.setup) {
+            this.$router.push("/setup");
+        }
+
+        const validateRes = await fetch("backend/validate", { method: "POST" });
+        const validateData = await validateRes.json();
+        this.loggedIn = validateData.authenticated;
     },
     async created() {
         this.servers = [
@@ -135,6 +157,7 @@ export default {
     --background: #272932;
     --accent: #272932;
     --text: #2c3e50;
+    --hover: #86878b;
 }
 
 body {

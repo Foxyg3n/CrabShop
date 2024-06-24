@@ -4,11 +4,16 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "server": "node backend/server.js"
   },
   "dependencies": {
+    "cookie-parser": "^1.4.6",
     "core-js": "^3.8.3",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
     "minecraft-server-util": "^5.4.4",
+    "mysql": "^2.18.1",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3"
   },

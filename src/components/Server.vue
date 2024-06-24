@@ -53,8 +53,9 @@ export default {
     border-radius: 5px;
     text-align: center;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    background: #f5f5f5;
     overflow: hidden;
+    background: #3b3e4b;
+    color: white;
 
     h2 {
         font-size: 28px;

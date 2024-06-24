@@ -4,6 +4,7 @@
         <div class="nav-links">
             <router-link to="/" class="nav-link">Servers</router-link>
             <router-link to="/tos" class="nav-link">Terms of service</router-link>
+            <button v-if="loggedIn" @click="logout">Logout</button>
         </div>
     </div>
 </template>
@@ -11,6 +12,15 @@
 <script>
 export default {
     name: "Navbar",
+    props: {
+        loggedIn: Boolean
+    },
+    methods: {
+        logout() {
+            fetch("backend/logout", { method: "POST" });
+            this.$emit("logout");
+        }
+    }
 };
 </script>
 
