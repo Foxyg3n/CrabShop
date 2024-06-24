@@ -1,19 +1,13 @@
-# crab-shop
+# CrabShop
+CrabShop is a CMS designed for minecraft shops so you can hook it into your own server (subservers)
 
-## Project setup
+## Installation
+!! The project is in making so it doesn't provide anything right now but if you want to run it yourself go ahead clone the repo and run these commands:
+
+*In the project folder*
 ```
 npm install
+npm run dev
 ```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+The project will be served on [localhost:8080](http://localhost:8080)

@@ -5,7 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "server": "node backend/server.js"
+    "backend": "node backend/backend.js",
+    "dev": "npm-run-all --parallel serve backend"
   },
   "dependencies": {
     "cookie-parser": "^1.4.6",
@@ -14,6 +15,7 @@
     "express": "^4.19.2",
     "minecraft-server-util": "^5.4.4",
     "mysql": "^2.18.1",
+    "npm-run-all": "^4.1.5",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3"
   },
