@@ -78,8 +78,11 @@ function isAuthenticatedMiddleware(req, res, next) {
 
 app.post("/backend/validate", (req, res) => {
     const authenticated = isAuthenticated(req);
-    if (!authenticated) res.clearCookie("session");
-    res.status(200).send({ authenticated });
+    if (!authenticated) {
+        res.clearCookie("session");
+        res.clearCookie("username");
+    }
+    res.status(200).send({ authenticated, username: req.cookies.username });
 });
 
 app.post("/backend/login", express.urlencoded({ extended: false }), (req, res) => {
@@ -103,7 +106,8 @@ app.post("/backend/login", express.urlencoded({ extended: false }), (req, res) =
         const sessionId = Math.random().toString(36).substring(2);
         sessions.add(sessionId);
         res.cookie("session", sessionId, { maxAge: hour });
-        res.status(200).send({ message: "Logged in" });
+        res.cookie("username", req.body.username, { maxAge: hour });
+        res.status(200).send({ username: req.body.username, message: "Logged in" });
         setTimeout(() => sessions.delete(sessionId), hour);
     });
 });
@@ -111,6 +115,7 @@ app.post("/backend/login", express.urlencoded({ extended: false }), (req, res) =
 app.post("/backend/logout", (req, res) => {
     sessions.delete(req.cookies.session);
     res.clearCookie("session");
+    res.clearCookie("username");
     res.status(200).send({ message: "Logged out" });
 });
 

@@ -4,7 +4,7 @@
         <div class="nav-links">
             <router-link to="/" class="nav-link">Servers</router-link>
             <router-link to="/tos" class="nav-link">Terms of service</router-link>
-            <button v-if="loggedIn" @click="logout">Logout</button>
+            <button class="nav-link" v-if="loggedIn" @click="logout">Logout</button>
         </div>
     </div>
 </template>
@@ -16,8 +16,7 @@ export default {
         loggedIn: Boolean
     },
     methods: {
-        logout() {
-            fetch("backend/logout", { method: "POST" });
+        async logout() {
             this.$emit("logout");
         }
     }
@@ -49,6 +48,9 @@ export default {
             display: block;
             position: relative;
             padding: 0.2em 0;
+            background: none;
+            border: none;
+            cursor: pointer;
         }
 
         .nav-link::after {

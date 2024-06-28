@@ -1,0 +1,3 @@
+<template>
+    Baza danych
+</template>

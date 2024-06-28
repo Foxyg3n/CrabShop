@@ -1,32 +1,28 @@
 <template>
     <section class="main">
-        <div v-if="loggedIn">
-            <h1>Admin Panel</h1>
-            <button @click="logout">Logout</button>
-        </div>
-        <div v-else>
+        <form @submit="login">
             <h1>Admin Login</h1>
-            <form @submit="login">
-                <label for="username">Username</label>
-                <input v-model="username" type="text" placeholder="Jacek" />
-                <label for="password">Password</label>
-                <input v-model="password" type="password" placeholder="Placek" />
-                <div class="checkbox">
-                    <label for="logged">Stay logged in</label>
-                    <input type="checkbox" name="logged" value="logged" />
-                </div>
-                <button>Login</button>
-            </form>
-        </div>
+            <label for="username">Username</label>
+            <input v-model="username" type="text" />
+            <label for="password">Password</label>
+            <input v-model="password" type="password" />
+            <div class="checkbox">
+                <label for="logged">Stay logged in</label>
+                <input type="checkbox" name="logged" value="logged" />
+            </div>
+            <button>Login</button>
+        </form>
     </section>
 </template>
 
 <script>
 export default {
     name: "AdminView",
+    props: {
+        loggedIn: Boolean,
+    },
     data() {
         return {
-            loggedIn: false,
             username: "",
             password: "",
         };
@@ -34,26 +30,17 @@ export default {
     methods: {
         login(e) {
             e.preventDefault();
-            fetch("backend/login", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    username: this.username,
-                    password: this.password,
-                }),
-            }).then((response) => {
-                if (response.ok) {
-                    this.$emit("login");
-                    this.$router.push("/");
-                }
-            }).catch((error) => {
-                console.error(error);
-            });
-        },
-        logout() {
-            this.loggedIn = false;
+            this.$emit("login", this.username, this.password);
+        }
+    },
+    watch: {
+        loggedIn() {
+            this.$router.push("/admin-panel");
+        }
+    },
+    mounted() {
+        if (this.loggedIn) {
+            this.$router.push("/admin-panel");
         }
     }
 }

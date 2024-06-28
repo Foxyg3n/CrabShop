@@ -1,9 +1,12 @@
 <template>
-    <Navbar @logout="logout" :loggedIn="loggedIn" />
-    <div class="content">
-        <RouterView @login="login" :servers="servers" :setup="setup" :loggedIn="loggedIn" />
+    <Navbar @logout="logout" :loggedIn="loggedIn" v-if="this.$route.meta.layout != 'AdminPanelLayout'" />
+    <div v-if="this.$route.meta.layout != 'AdminPanelLayout'" class="content">
+        <RouterView @logout="logout" @login="login" :servers="servers" :setup="setup" :loggedIn="loggedIn"
+            :loggedAs="loggedAs" />
     </div>
-    <Footer />
+    <RouterView v-else @logout="logout" @login="login" :servers="servers" :setup="setup" :loggedIn="loggedIn"
+        :loggedAs="loggedAs" />
+    <Footer v-if="this.$route.meta.layout != 'AdminPanelLayout'" />
 </template>
 
 <script>
@@ -21,14 +24,34 @@ export default {
             servers: [],
             setup: false,
             loggedIn: false,
+            loggedAs: "",
         };
     },
     methods: {
-        login() {
-            this.loggedIn = true;
+        login(username, password) {
+            fetch("backend/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    username: username,
+                    password: password,
+                }),
+            }).then((response) => {
+                if (response.ok) {
+                    this.$router.push("/admin-panel");
+                    this.loggedIn = true;
+                    this.loggedAs = username;
+                }
+            }).catch((error) => {
+                console.error(error);
+            });
         },
-        logout() {
-            this.loggedIn = false;
+        async logout() {
+            const response = await fetch("backend/logout", { method: "POST" });
+            if (response.ok) this.loggedIn = false;
+            this.$router.push("/");
         }
     },
     async mounted() {
@@ -42,6 +65,10 @@ export default {
         const validateRes = await fetch("backend/validate", { method: "POST" });
         const validateData = await validateRes.json();
         this.loggedIn = validateData.authenticated;
+
+        if (this.loggedIn) {
+            this.loggedAs = validateData.username;
+        }
     },
     async created() {
         this.servers = [
@@ -187,6 +214,16 @@ textarea {
     color: inherit;
     margin: 0;
     padding: 0;
+}
+
+button {
+    font: inherit;
+    background: var(--background);
+    color: var(--primary);
+    border: none;
+    padding: 5px 15px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 a {
